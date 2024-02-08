@@ -1,0 +1,23 @@
+in:
+  type: postgresql
+  host: db 
+  port: 5432
+  user: northwind_user
+  password: thewindisblowing
+  database: northwind
+  query: |
+    SELECT * FROM categories;
+    SELECT * FROM customers;
+    SELECT * FROM employees;
+    SELECT * FROM orders;
+    SELECT * FROM products;
+    SELECT * FROM shippers;
+    SELECT * FROM suppliers;
+out:
+  type: file
+  path_prefix: /workspace/data/postgres/%Y-%m-%d/
+  sequence_format: '%03d.%t'
+  file_ext: csv
+  formatter:
+    type: csv
+    header_line: true
